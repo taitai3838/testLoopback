@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>LoopBack example access control</title>
+</head>
+
+<body>
+  <h1>
+    <% if (typeof username !== 'undefined') { %> - Welcome
+      <%=
+      username%>
+        <% } %>
+  </h1>
+  <table border=1 cellpadding=5>
+    <tr>
+      <th>Function</th>
+    </tr>
+    <tr>
+      <td>
+        <a href="/api/projects/list-projects">Public projects</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/api/projects<% if (typeof accessToken !== 'undefined') {
+            %>?access_token=<%= accessToken %><% } %>">View all projects
+        </a>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <a href="/api/projects/1<% if (typeof accessToken !== 'undefined')
+            { %>?access_token=<%= accessToken %><% } %>">Show balance for project 1</a>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <form action="/api/projects/donate<% if (typeof accessToken !==
+              'undefined') { %>?access_token=<%= accessToken %><% } %>" method="post">
+          <label for="amount">Donate</h2>
+            <input type="hidden" name="id" value="1">
+            <input type="text" name="amount" value="100">
+            <input type="submit" value="Submit">
+        </form>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <form action="/api/projects/withdraw<% if (typeof accessToken !==
+            'undefined') { %>?access_token=<%= accessToken %><% } %>" method="post">
+          <label for="amount">Withdraw</h2>
+            <input type="hidden" name="id" value="1">
+            <input type="text" name="amount" value="100">
+            <input type="submit" value="Submit">
+        </form>
+      </td>
+
+    </tr>
+    <tr>
+      <td colspan=6>
+        <a href="/logout<% if (typeof accessToken !==
+            'undefined') { %>?access_token=<%= accessToken %><% } %>">Log out
+        </a>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

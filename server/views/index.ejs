@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>LoopBack example access control</title>
+</head>
+
+<body>
+  <h1>ERP Program</h1>
+  <table border=1 cellpadding=5>
+    <tr>
+      <th>Login</th>
+    </tr>
+    <tr>
+      <td>
+        <a href="/projects">Guest</a>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <form action="/projects" method="post">
+          <input type="text" name="email" value="john@doe.com" placeholder="Email">
+          <br>
+          <input type="text" name="password" value="" placeholder="Password">
+          <br>
+          <input type="submit" value="Login">
+        </form>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <form action="/projects" method="post">
+          <input type="text" name="email" value="jane@doe.com" placeholder="Email">
+          <br>
+          <input type="text" name="password" value="" placeholder="Password">
+          <br>
+          <input type="submit" value="Login">
+        </form>
+      </td>
+
+    </tr>
+
+    <% if (loginFailed) { %>
+      <tr>
+        <td colspan=6>
+          <span style="color:red">Login failed, please try again</span>
+        </td>
+      </tr>
+      <% } %>
+  </table>
+</body>
+
+</html>
