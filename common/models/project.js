@@ -6,15 +6,18 @@
 module.exports = function(Project) {
   // listProjects
   Project.listProjects = function(cb) {
-    Project.find({
-      fields: {
-        balance: false
-      }
-    }, cb);
+    Project.find(
+      {
+        fields: {
+          balance: false
+        }
+      },
+      cb
+    );
   };
-  Project.remoteMethod('listProjects', {
-    returns: {arg: 'projects', type: 'array'},
-    http: {path:'/list-projects', verb: 'get'}
+  Project.remoteMethod("listProjects", {
+    returns: { arg: "projects", type: "array" },
+    http: { path: "/list-projects", verb: "get" }
   });
 
   // donate
@@ -28,13 +31,10 @@ module.exports = function(Project) {
       cb(null, true);
     });
   };
-  Project.remoteMethod('donate', {
-    accepts: [
-      {arg: 'id', type: 'number'},
-      {arg: 'amount', type: 'number'}
-    ],
-    returns: {arg: 'success', type: 'boolean'},
-    http: {path:'/donate', verb: 'post'}
+  Project.remoteMethod("donate", {
+    accepts: [{ arg: "id", type: "number" }, { arg: "amount", type: "number" }],
+    returns: { arg: "success", type: "boolean" },
+    http: { path: "/donate", verb: "post" }
   });
 
   // withdraw
@@ -42,19 +42,27 @@ module.exports = function(Project) {
     Project.findById(id, function(err, project) {
       if (err) return cb(err);
 
-      project.balance = project.balance >= amount ?
-          project.balance - amount : 0;
+      project.balance =
+        project.balance >= amount ? project.balance - amount : 0;
       project.save();
 
       cb(null, true);
     });
   };
-  Project.remoteMethod('withdraw', {
-    accepts: [
-      {arg: 'id', type: 'number'},
-      {arg: 'amount', type: 'number'}
-    ],
-    returns: {arg: 'success', type: 'boolean'},
-    http: {path:'/withdraw', verb: 'post'}
+  Project.remoteMethod("withdraw", {
+    accepts: [{ arg: "id", type: "number" }, { arg: "amount", type: "number" }],
+    returns: { arg: "success", type: "boolean" },
+    http: { path: "/withdraw", verb: "post" }
+  });
+  //create project
+  Project.create = function(name, cb) {
+    console.log("in create method");
+    cb(null, name);
+  };
+
+  Project.remoteMethod("create", {
+    accepts: [{ arg: "name", type: "string" }],
+    returns: { arg: "success", type: "boolean" },
+    http: { path: "/create", verb: "post" }
   });
 };

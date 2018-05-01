@@ -35,7 +35,10 @@
         <a href="/api/projects/1<% if (typeof accessToken !== 'undefined')
             { %>?access_token=<%= accessToken %><% } %>">Show balance for project 1</a>
       </td>
-
+      <td>
+        <a href="/api/projects/create<% if (typeof accessToken !== 'undefined')
+            { %>?access_token=<%= accessToken %><% } %>">Crate new project</a>
+      </td>
     </tr>
     <tr>
       <td>
@@ -59,7 +62,6 @@
             <input type="submit" value="Submit">
         </form>
       </td>
-
     </tr>
     <tr>
       <td colspan=6>

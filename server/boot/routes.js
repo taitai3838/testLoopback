@@ -3,13 +3,10 @@
 // This file is licensed under the Artistic License 2.0.
 // License text available at https://opensource.org/licenses/Artistic-2.0
 
-var sample = require("./sample-models");
-
 module.exports = function(app) {
   var router = app.loopback.Router();
 
   router.get("/", function(req, res) {
-    console.log("model", sample.password1);
     res.render("index", {
       loginFailed: false
     });

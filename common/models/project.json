@@ -59,7 +59,14 @@
       "principalId": "admin",
       "permission": "ALLOW",
       "property": "withdraw"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
     }
   ],
-  "methods": []
+  "methods": {}
 }
