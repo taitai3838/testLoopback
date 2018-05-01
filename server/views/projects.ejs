@@ -36,8 +36,12 @@
             { %>?access_token=<%= accessToken %><% } %>">Show balance for project 1</a>
       </td>
       <td>
-        <a href="/api/projects/create<% if (typeof accessToken !== 'undefined')
-            { %>?access_token=<%= accessToken %><% } %>">Crate new project</a>
+        <a href="/api/projects?filter[where][id]=1 <% if (typeof accessToken !== 'undefined')
+        { %>?access_token=<%= accessToken %><% } %>">Show balance for owner 1</a>
+      </td>
+      <td>
+        <a href="/api/projects/new<% if (typeof accessToken !== 'undefined')
+            { %>?access_token=<%= accessToken %><% } %>">Create new project</a>
       </td>
     </tr>
     <tr>

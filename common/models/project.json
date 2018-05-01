@@ -65,7 +65,7 @@
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW",
-      "property": "create"
+      "property": "new"
     }
   ],
   "methods": {}

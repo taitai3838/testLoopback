@@ -55,14 +55,18 @@ module.exports = function(Project) {
     http: { path: "/withdraw", verb: "post" }
   });
   //create project
-  Project.create = function(name, cb) {
+  Project.new = function(name, cb) {
+    Project.create({
+      name: "project7",
+      balance: 100,
+      ownerId: "1"
+    });
     console.log("in create method");
-    cb(null, name);
   };
 
-  Project.remoteMethod("create", {
+  Project.remoteMethod("new", {
     accepts: [{ arg: "name", type: "string" }],
     returns: { arg: "success", type: "boolean" },
-    http: { path: "/create", verb: "post" }
+    http: { path: "/new", verb: "get" }
   });
 };
